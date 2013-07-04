@@ -1,0 +1,689 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Electroguru search-results</title>
+<link rel="stylesheet" href="css/style.css" />
+
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/common.js"></script>
+
+<script src="js/jquery.carouFredSel-6.1.0-packed.js"></script>
+<script src="js/jquery.ui.core.min.js"></script>
+<script src="js/jquery.ui.widget.min.js"></script>
+<script src="js/jquery.ui.mouse.min.js"></script>
+<script src="js/jquery.ui.slider.min.js"></script>
+<script src="js/jquery.ui.menu.min.js"></script>
+<script src="js/jquery.ui.autocomplete.min.js"></script>
+<script src="js/jquery.ui.position.min.js"></script>
+
+
+<script src="js/jquery.mousewheel.js"></script>
+<script src="js/jquery.jscrollpane.min.js"></script>
+<script src="js/common.js"></script>
+<script>
+    $(function() {
+        var acScource = [
+            { value : 'кабельные каналы',link : '#link1'},
+            { value : 'кабель',link : '#link2'},
+            { value : 'кабельные провода',link : '#link3'},
+            { value : 'кабельные каналы сложные',link : '#link4'},
+            { value : 'кабель простое',link : '#link5'}
+        ];
+
+        $( "#ac" ).autocomplete({
+            minLength: 0,
+            source: acScource,
+            appendTo: $(".b-input-i"),
+            open: function(e,ui) {
+                var termTemplate = '<strong>%s</strong>';
+                var acData = $(this).data('autocomplete');
+
+                acData.menu.element.find('a').each(function() {
+                    var me = $(this);
+                    var regex = new RegExp(acData.term, "gi");
+                    me.html( me.text().replace(regex, function (matched) {
+                        return termTemplate.replace('%s', matched);
+                    }) );
+                });
+
+            },
+            focus: function( event, ui ) {
+                $( "#ac" ).val( ui.item.value );
+                return false;
+            },
+            select: function( event, ui ) {
+                $( "#project" ).val( ui.item.value );
+                return false;
+            }
+        })
+//                .data( "autocomplete" )._renderItem = function( ul, item ) {
+//            return $( "<li>" )
+//                    .data( "item.autocomplete", item )
+//                    .append( '<a href="'+ item.link+'">' + item.value + "</a>" )
+//                    .appendTo( ul );
+//        };
+    });
+</script>
+
+
+</head>
+
+<body>
+<div class="container">
+    <div class="container__inner">
+        <div class="hdr">
+            <div class="case">
+                <div class="case__inner">
+                    <table class="hdr__layout line">
+                        <tr>
+                            <td class="hdr__layout-left">
+                                <a href="#" class="b-logo">
+                                    <img src="img/logo.png" alt="Электрогуру" />
+                                    <span class="b-logo__txt">торгово-информационная система</span>
+                                </a>
+                            </td>
+                            <td class="hdr__layout-mid">
+                                <div class="hdr__contacts">
+                                    <span class="hdr__contacts-item hdr__contacts-item_first">Связаться с нами:</span>
+                                    <span class="hdr__contacts-item hdr__contacts-item_second"><em>+ 0 (123) <span class="hdr__num">456 78 90</span></em></span>
+                                    <span class="hdr__contacts-item hdr__contacts-item_third"><em>+ 0 (123) <span class="hdr__num">456 78 90</span></em></span>
+                                </div>
+
+                                <div class="menu">
+                                    <table class="menu__tbl">
+                                        <tr>
+                                            <td class="menu__item"><a href="#" class="menu__link"><i class="ico ico_type_home"> </i></a></td>
+                                            <td class="menu__item"><a href="#" class="menu__link">Новости</a></td>
+                                            <td class="menu__item"><a href="#" class="menu__link">О компании</a></td>
+                                            <td class="menu__item"><a href="#" class="menu__link">Доставка</a></td>
+                                            <td class="menu__item"><a href="#" class="menu__link">Контакты</a></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                            <td class="hdr__layout-right">
+                                <div class="hdr__login"><a href="#">Вход</a> / <a href="#">Регистрация</a></div>
+
+                                <a href="#" class="hdr-cart">
+                                    <span class="hdr-cart__decor"><i class="ico ico_type_hdr-cart"></i></span>
+                                    <span class="hdr-cart__txt">2 шт. / 20 000 руб.</span>
+                                    <span class="hdr-cart__next"><span class="hdr-cart__next-inner">&gt;</span></span>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="cnt">
+            <div class="case" style="position:relative; z-index:5;">
+                <div class="case__inner line">
+                    <div class="b-ttl b-ttl_iconed">
+                        <h1>Результаты поиска</h1>
+                    </div>
+                    <div class="path path_category">
+                        <a href="#" class="path__item">Главная</a> <i class="path__split">&gt;</i>
+                        <span class="path__item">Результаты поиска по запросу “УЗО”</span>
+                    </div>
+
+                    <div class="b-search b-search_blue">
+                        <div class="case">
+                            <div class="case__inner">
+                                <table class="b-search__tbl">
+                                    <tbody><tr>
+                                        <td class="b-search__txt">Начать поиск</td>
+                                        <td class="b-search__input">
+                                            <div class="b-input-i">
+                                                <input id="ac" type="text" class="b-input" value="" placeholder="введите текст что бы начать" autocomplete="off" />
+
+                                                <!--<ul class="b-input__dropdown">
+                                                    <li class="b-input__dropdown-item"><a href="#">кабельные каналы</a></li>
+                                                    <li class="b-input__dropdown-item"><a href="#">кабель</a></li>
+                                                    <li class="b-input__dropdown-item"><a href="#">кабельные провода</a></li>
+                                                    <li class="b-input__dropdown-item"><a href="#">кабельные каналы</a></li>
+                                                    <li class="b-input__dropdown-item"><a href="#">кабель</a></li>
+                                                </ul>-->
+                                            </div>
+                                        </td>
+                                        <td class="b-search__submit">
+                                            <a href="#" class="b-search__button">
+                                                <i class="ico ico_type_search"></i>
+                                                <i class="ico ico_type_search-arrow"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    </tbody></table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="filter filter_search line">
+            <div class="filter__inner">
+                <div class="case">
+                    <div class="case__inner">
+                        <div class="filter__ttl">результаты поиска по запросу “УЗО”</div>
+
+                        <div class="filter__field line">
+                            <div class="filter__result">
+                                <div class="filter__result-item-i">
+                                    <a href="#" class="filter__result-item filter__result-item_active"><span class="filter__result-num">1260</span> Все результаты</a>
+                                </div>
+                                <div class="filter__result-item-i">
+                                    <a href="#" class="filter__result-item"><span class="filter__result-num">37</span> Рубильники, разъединители. Плавкие ставки</a>
+                                </div>
+                                <div class="filter__result-item-i">
+                                    <a href="#" class="filter__result-item"><span class="filter__result-num">60</span> Светильники</a>
+                                </div>
+                                <div class="filter__result-item-i">
+                                    <a href="#" class="filter__result-item"><span class="filter__result-num">365</span> Рубильники, разъединители. Плавкие ставки</a>
+                                </div>
+                                <div class="filter__result-item-i">
+                                    <a href="#" class="filter__result-item"><span class="filter__result-num">50</span> Автоматы и УЗО</a>
+                                </div>
+                                <div class="filter__result-item-i">
+                                    <a href="#" class="filter__result-item"><span class="filter__result-num">25</span> Молниезащита и заземление</a>
+                                </div>
+                                <div class="filter__result-item-i">
+                                    <a href="#" class="filter__result-item"><span class="filter__result-num">47</span> Лампы</a>
+                                </div>
+                                <div class="filter__result-item-i">
+                                    <a href="#" class="filter__result-item"><span class="filter__result-num">25</span> Устройства управление и сигнализации</a>
+                                </div>
+                                <div class="filter__result-item-i">
+                                    <a href="#" class="filter__result-item"><span class="filter__result-num">25</span> Контакторы и реле</a>
+                                </div>
+                                <div class="filter__result-item-i">
+                                    <a href="#" class="filter__result-item"><span class="filter__result-num">650</span> Электросчетчики и трансформаторы тока</a>
+                                </div>
+                                <div class="filter__result-item-i">
+                                    <a href="#" class="filter__result-item"><span class="filter__result-num">110</span> Разное</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="#" class="filter__button ico-i"><i class="ico ico_type_arrow-down"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cnt">
+            <div class="case">
+                <div class="case__inner line">
+                <div class="prod-list prod-list_grid prod-list_fixed-price line">
+                <div class="prod-list__result line">
+                    <div class="prod-list__result-item">Найдено товаров: <span class="prod-list__num">20 456</span></div>
+                    <div class="prod-list__result-item">
+                        Сортировать по:
+                        <span class="prod-list__sort">производителю <a href="#" class="ico ico_type_sort-down ico_type_sort-down-active"></a> <a href="#" class="ico ico_type_sort-up"></a></span>
+                        <span class="prod-list__sort">цене <a href="#" class="ico ico_type_sort-down"></a> <a href="#" class="ico ico_type_sort-up ico_type_sort-up-active"></a></span>
+                    </div>
+                    <div class="prod-list__result-item">
+                        На странице товаров:
+                                <span class="prod-list__show-on-page">
+                                    <a href="#" class="prod-list__link_active">12</a>
+                                    <a href="#" class="">24</a>
+                                    <a href="#" class="">36</a>
+                                    <a href="#" class="">48</a>
+                                </span>
+                    </div>
+                    <div class="prod-list__change-view"><a href="#" class="ico ico_type_view-grid ico_type_view-grid-active"></a> <a href="#" class="ico ico_type_view-full"></a></div>
+                </div>
+
+                <div class="prod-list__item-i">
+                    <div class="prod-list__item">
+                        <div class="prod-list__item-inner">
+                            <a href="#">
+                                    <span class="item-logo">
+                                        <span class="item-logo__inner-i"><span class="item-logo__inner"><img src="img/product1.jpg" alt="" /></span></span>
+                                        <span class="item-logo__bg"></span>
+                                    </span>
+
+                                <span class="prod-list__name">Выкл.диф.тока 4мод. F204 AC-25/0,5</span>
+                            </a>
+
+                            <div class="prod-list__info">
+                                <div class="prod-list__info-item"><strong>Артикул:</strong> 2CSF204001R4250</div>
+                                <div class="prod-list__info-item"><strong>Производитель:</strong> ABB</div>
+                                <div class="prod-list__info-item"><strong>Серия:</strong> F200</div>
+                            </div>
+
+                            <div class="add-cart add-cart_big">
+                                <a href="#" class="add-cart__line-i">
+                                            <span class="add-cart__line">
+                                                <span class="add-cart__new-price"><span class="add-cart__num">2 000</span> руб.</span>
+                                            </span>
+                                            <span class="add-cart__line">
+                                                <span class="add-cart__old-price">(10 000 руб.)</span>
+                                            </span>
+
+                                    <span class="ico-i"><i class="ico ico_type_cart-hover"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="prod-list__item-i">
+                    <div class="prod-list__item">
+                        <div class="prod-list__item-inner">
+                            <a href="#">
+                                    <span class="item-logo">
+                                        <span class="item-logo__inner-i"><span class="item-logo__inner"><img src="img/product1.jpg" alt="" /></span></span>
+                                        <span class="item-logo__bg"></span>
+                                    </span>
+
+                                <span class="prod-list__name">Выкл.диф.тока 4мод. F204 AC-25/0,5</span>
+                            </a>
+
+                            <div class="prod-list__info">
+                                <div class="prod-list__info-item"><strong>Артикул:</strong> 2CSF204001R4250</div>
+                                <div class="prod-list__info-item"><strong>Производитель:</strong> ABB</div>
+                                <div class="prod-list__info-item"><strong>Серия:</strong> F200</div>
+                            </div>
+
+                            <div class="add-cart add-cart_big">
+                                <a href="#" class="add-cart__line-i">
+                                            <span class="add-cart__line">
+                                                <span class="add-cart__new-price"><span class="add-cart__num">2 000</span> руб.</span>
+                                            </span>
+                                            <span class="add-cart__line">
+                                                <span class="add-cart__old-price">(10 000 руб.)</span>
+                                            </span>
+
+                                    <span class="ico-i"><i class="ico ico_type_cart-hover"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="prod-list__item-i">
+                    <div class="prod-list__item">
+                        <div class="prod-list__item-inner">
+                            <a href="#">
+                                    <span class="item-logo">
+                                        <span class="item-logo__inner-i"><span class="item-logo__inner"><img src="img/product1.jpg" alt="" /></span></span>
+                                        <span class="item-logo__bg"></span>
+                                    </span>
+
+                                <span class="prod-list__name">Выкл.диф.тока 4мод. F204 AC-25/0,5</span>
+                            </a>
+
+                            <div class="prod-list__info">
+                                <div class="prod-list__info-item"><strong>Артикул:</strong> 2CSF204001R4250</div>
+                                <div class="prod-list__info-item"><strong>Производитель:</strong> ABB</div>
+                                <div class="prod-list__info-item"><strong>Серия:</strong> F200</div>
+                            </div>
+
+                            <div class="add-cart add-cart_big">
+                                <a href="#" class="add-cart__line-i">
+                                            <span class="add-cart__line">
+                                                <span class="add-cart__new-price"><span class="add-cart__num">2 000</span> руб.</span>
+                                            </span>
+                                            <span class="add-cart__line">
+                                                <span class="add-cart__old-price">(10 000 руб.)</span>
+                                            </span>
+
+                                    <span class="ico-i"><i class="ico ico_type_cart-hover"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="prod-list__item-i">
+                    <div class="prod-list__item">
+                        <div class="prod-list__item-inner">
+                            <a href="#">
+                                    <span class="item-logo">
+                                        <span class="item-logo__inner-i"><span class="item-logo__inner"><img src="img/product1.jpg" alt="" /></span></span>
+                                        <span class="item-logo__bg"></span>
+                                    </span>
+
+                                <span class="prod-list__name">Выкл.диф.тока 4мод. F204 AC-25/0,5</span>
+                            </a>
+
+                            <div class="prod-list__info">
+                                <div class="prod-list__info-item"><strong>Артикул:</strong> 2CSF204001R4250</div>
+                                <div class="prod-list__info-item"><strong>Производитель:</strong> ABB</div>
+                                <div class="prod-list__info-item"><strong>Серия:</strong> F200</div>
+                            </div>
+
+                            <div class="add-cart add-cart_big">
+                                <a href="#" class="add-cart__line-i">
+                                            <span class="add-cart__line">
+                                                <span class="add-cart__new-price"><span class="add-cart__num">2 000</span> руб.</span>
+                                            </span>
+                                            <span class="add-cart__line">
+                                                <span class="add-cart__old-price">(10 000 руб.)</span>
+                                            </span>
+
+                                    <span class="ico-i"><i class="ico ico_type_cart-hover"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="prod-list__item-i">
+                    <div class="prod-list__item">
+                        <div class="prod-list__item-inner">
+                            <a href="#">
+                                    <span class="item-logo">
+                                        <span class="item-logo__inner-i"><span class="item-logo__inner"><img src="img/product1.jpg" alt="" /></span></span>
+                                        <span class="item-logo__bg"></span>
+                                    </span>
+
+                                <span class="prod-list__name">Выкл.диф.тока 4мод. F204 AC-25/0,5</span>
+                            </a>
+
+                            <div class="prod-list__info">
+                                <div class="prod-list__info-item"><strong>Артикул:</strong> 2CSF204001R4250</div>
+                                <div class="prod-list__info-item"><strong>Производитель:</strong> ABB</div>
+                                <div class="prod-list__info-item"><strong>Серия:</strong> F200</div>
+                            </div>
+
+                            <div class="add-cart add-cart_big">
+                                <a href="#" class="add-cart__line-i">
+                                            <span class="add-cart__line">
+                                                <span class="add-cart__new-price"><span class="add-cart__num">2 000</span> руб.</span>
+                                            </span>
+                                            <span class="add-cart__line">
+                                                <span class="add-cart__old-price">(10 000 руб.)</span>
+                                            </span>
+
+                                    <span class="ico-i"><i class="ico ico_type_cart-hover"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="prod-list__item-i">
+                    <div class="prod-list__item">
+                        <div class="prod-list__item-inner">
+                            <a href="#">
+                                    <span class="item-logo">
+                                        <span class="item-logo__inner-i"><span class="item-logo__inner"><img src="img/product1.jpg" alt="" /></span></span>
+                                        <span class="item-logo__bg"></span>
+                                    </span>
+
+                                <span class="prod-list__name">Выкл.диф.тока 4мод. F204 AC-25/0,5</span>
+                            </a>
+
+                            <div class="prod-list__info">
+                                <div class="prod-list__info-item"><strong>Артикул:</strong> 2CSF204001R4250</div>
+                                <div class="prod-list__info-item"><strong>Производитель:</strong> ABB</div>
+                                <div class="prod-list__info-item"><strong>Серия:</strong> F200</div>
+                            </div>
+
+                            <div class="add-cart add-cart_big">
+                                <a href="#" class="add-cart__line-i">
+                                            <span class="add-cart__line">
+                                                <span class="add-cart__new-price"><span class="add-cart__num">2 000</span> руб.</span>
+                                            </span>
+                                            <span class="add-cart__line">
+                                                <span class="add-cart__old-price">(10 000 руб.)</span>
+                                            </span>
+
+                                    <span class="ico-i"><i class="ico ico_type_cart-hover"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="prod-list__item-i">
+                    <div class="prod-list__item">
+                        <div class="prod-list__item-inner">
+                            <a href="#">
+                                    <span class="item-logo">
+                                        <span class="item-logo__inner-i"><span class="item-logo__inner"><img src="img/product1.jpg" alt="" /></span></span>
+                                        <span class="item-logo__bg"></span>
+                                    </span>
+
+                                <span class="prod-list__name">Выкл.диф.тока 4мод. F204 AC-25/0,5</span>
+                            </a>
+
+                            <div class="prod-list__info">
+                                <div class="prod-list__info-item"><strong>Артикул:</strong> 2CSF204001R4250</div>
+                                <div class="prod-list__info-item"><strong>Производитель:</strong> ABB</div>
+                                <div class="prod-list__info-item"><strong>Серия:</strong> F200</div>
+                            </div>
+
+                            <div class="add-cart add-cart_big">
+                                <a href="#" class="add-cart__line-i">
+                                            <span class="add-cart__line">
+                                                <span class="add-cart__new-price"><span class="add-cart__num">2 000</span> руб.</span>
+                                            </span>
+                                            <span class="add-cart__line">
+                                                <span class="add-cart__old-price">(10 000 руб.)</span>
+                                            </span>
+
+                                    <span class="ico-i"><i class="ico ico_type_cart-hover"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="prod-list__item-i">
+                    <div class="prod-list__item">
+                        <div class="prod-list__item-inner">
+                            <a href="#">
+                                    <span class="item-logo">
+                                        <span class="item-logo__inner-i"><span class="item-logo__inner"><img src="img/product1.jpg" alt="" /></span></span>
+                                        <span class="item-logo__bg"></span>
+                                    </span>
+
+                                <span class="prod-list__name">Выкл.диф.тока 4мод. F204 AC-25/0,5</span>
+                            </a>
+
+                            <div class="prod-list__info">
+                                <div class="prod-list__info-item"><strong>Артикул:</strong> 2CSF204001R4250</div>
+                                <div class="prod-list__info-item"><strong>Производитель:</strong> ABB</div>
+                                <div class="prod-list__info-item"><strong>Серия:</strong> F200</div>
+                            </div>
+
+                            <div class="add-cart add-cart_big">
+                                <a href="#" class="add-cart__line-i">
+                                            <span class="add-cart__line">
+                                                <span class="add-cart__new-price"><span class="add-cart__num">2 000</span> руб.</span>
+                                            </span>
+                                            <span class="add-cart__line">
+                                                <span class="add-cart__old-price">(10 000 руб.)</span>
+                                            </span>
+
+                                    <span class="ico-i"><i class="ico ico_type_cart-hover"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="prod-list__item-i">
+                    <div class="prod-list__item">
+                        <div class="prod-list__item-inner">
+                            <a href="#">
+                                    <span class="item-logo">
+                                        <span class="item-logo__inner-i"><span class="item-logo__inner"><img src="img/product1.jpg" alt="" /></span></span>
+                                        <span class="item-logo__bg"></span>
+                                    </span>
+
+                                <span class="prod-list__name">Выкл.диф.тока 4мод. F204 AC-25/0,5</span>
+                            </a>
+
+                            <div class="prod-list__info">
+                                <div class="prod-list__info-item"><strong>Артикул:</strong> 2CSF204001R4250</div>
+                                <div class="prod-list__info-item"><strong>Производитель:</strong> ABB</div>
+                                <div class="prod-list__info-item"><strong>Серия:</strong> F200</div>
+                            </div>
+
+                            <div class="add-cart add-cart_big">
+                                <a href="#" class="add-cart__line-i">
+                                            <span class="add-cart__line">
+                                                <span class="add-cart__new-price"><span class="add-cart__num">2 000</span> руб.</span>
+                                            </span>
+                                            <span class="add-cart__line">
+                                                <span class="add-cart__old-price">(10 000 руб.)</span>
+                                            </span>
+
+                                    <span class="ico-i"><i class="ico ico_type_cart-hover"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="prod-list__item-i">
+                    <div class="prod-list__item">
+                        <div class="prod-list__item-inner">
+                            <a href="#">
+                                    <span class="item-logo">
+                                        <span class="item-logo__inner-i"><span class="item-logo__inner"><img src="img/product1.jpg" alt="" /></span></span>
+                                        <span class="item-logo__bg"></span>
+                                    </span>
+
+                                <span class="prod-list__name">Выкл.диф.тока 4мод. F204 AC-25/0,5</span>
+                            </a>
+
+                            <div class="prod-list__info">
+                                <div class="prod-list__info-item"><strong>Артикул:</strong> 2CSF204001R4250</div>
+                                <div class="prod-list__info-item"><strong>Производитель:</strong> ABB</div>
+                                <div class="prod-list__info-item"><strong>Серия:</strong> F200</div>
+                            </div>
+
+                            <div class="add-cart add-cart_big">
+                                <a href="#" class="add-cart__line-i">
+                                            <span class="add-cart__line">
+                                                <span class="add-cart__new-price"><span class="add-cart__num">2 000</span> руб.</span>
+                                            </span>
+                                            <span class="add-cart__line">
+                                                <span class="add-cart__old-price">(10 000 руб.)</span>
+                                            </span>
+
+                                    <span class="ico-i"><i class="ico ico_type_cart-hover"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="prod-list__item-i">
+                    <div class="prod-list__item">
+                        <div class="prod-list__item-inner">
+                            <a href="#">
+                                    <span class="item-logo">
+                                        <span class="item-logo__inner-i"><span class="item-logo__inner"><img src="img/product1.jpg" alt="" /></span></span>
+                                        <span class="item-logo__bg"></span>
+                                    </span>
+
+                                <span class="prod-list__name">Выкл.диф.тока 4мод. F204 AC-25/0,5</span>
+                            </a>
+
+                            <div class="prod-list__info">
+                                <div class="prod-list__info-item"><strong>Артикул:</strong> 2CSF204001R4250</div>
+                                <div class="prod-list__info-item"><strong>Производитель:</strong> ABB</div>
+                                <div class="prod-list__info-item"><strong>Серия:</strong> F200</div>
+                            </div>
+
+                            <div class="add-cart add-cart_big">
+                                <a href="#" class="add-cart__line-i">
+                                            <span class="add-cart__line">
+                                                <span class="add-cart__new-price"><span class="add-cart__num">2 000</span> руб.</span>
+                                            </span>
+                                            <span class="add-cart__line">
+                                                <span class="add-cart__old-price">(10 000 руб.)</span>
+                                            </span>
+
+                                    <span class="ico-i"><i class="ico ico_type_cart-hover"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="prod-list__item-i">
+                    <div class="prod-list__item">
+                        <div class="prod-list__item-inner">
+                            <a href="#">
+                                    <span class="item-logo">
+                                        <span class="item-logo__inner-i"><span class="item-logo__inner"><img src="img/product1.jpg" alt="" /></span></span>
+                                        <span class="item-logo__bg"></span>
+                                    </span>
+
+                                <span class="prod-list__name">Выкл.диф.тока 4мод. F204 AC-25/0,5</span>
+                            </a>
+
+                            <div class="prod-list__info">
+                                <div class="prod-list__info-item"><strong>Артикул:</strong> 2CSF204001R4250</div>
+                                <div class="prod-list__info-item"><strong>Производитель:</strong> ABB</div>
+                                <div class="prod-list__info-item"><strong>Серия:</strong> F200</div>
+                            </div>
+
+                            <div class="add-cart add-cart_big">
+                                <a href="#" class="add-cart__line-i">
+                                            <span class="add-cart__line">
+                                                <span class="add-cart__new-price"><span class="add-cart__num">2 000</span> руб.</span>
+                                            </span>
+                                            <span class="add-cart__line">
+                                                <span class="add-cart__old-price">(10 000 руб.)</span>
+                                            </span>
+
+                                    <span class="ico-i"><i class="ico ico_type_cart-hover"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                    <div class="pager pager_hover-bg">
+                        <a href="#" class="pager__left"><i class="ico ico_type_arrow-prev"></i> Ctrl</a>
+                        <a href="#" class="pager__right">Ctrl <i class="ico ico_type_arrow-next"></i></a>
+                            <span class="pager__center">
+                                <span class="pager__item pager__item_active">1</span>
+                                <a href="#" class="pager__item">2</a>
+                                <a href="#" class="pager__item">3</a>
+                                <a href="#" class="pager__item">4</a>
+                                <a href="#" class="pager__item">5</a>
+                                <span class="pager__item">...</span>
+                                <a href="#" class="pager__item">12</a>
+                                <a href="#" class="pager__item">13</a>
+                                <a href="#" class="pager__item">14</a>
+                                <a href="#" class="pager__item">15</a>
+                                <a href="#" class="pager__item">16</a>
+                            </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="ftr">
+    <div class="case line">
+        <div class="case__inner">
+            <p class="ftr__copy">© electroguru, 2012. All rights reserved</p>
+            <div class="ftr__menu">
+                <a href="#" class="ftr__menu-item">Главная</a>
+                <a href="#" class="ftr__menu-item">Новости</a>
+                <a href="#" class="ftr__menu-item">О компании</a>
+                <a href="#" class="ftr__menu-item">Доставка</a>
+                <a href="#" class="ftr__menu-item">Контакты</a>
+            </div>
+            <p class="ftr__social">
+                Мы в социальных сетях: <a href="#" class="ico ico_type_fb"></a> <a href="#" class="ico ico_type_vk"></a> <a href="#" class="ico ico_type_od"></a> <a href="#" class="ico ico_type_tw"></a>
+            </p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Electroguru about</title>
+<link rel="stylesheet" href="css/style.css" />
+
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/common.js"></script>
+
+<script src="js/jquery.carouFredSel-6.1.0-packed.js"></script>
+<script>
+    $(function(){
+        $("#jsSlideshow").carouFredSel({
+            width:'100%',
+            items:{
+                width:'100%',
+                visible:1,
+                filter:'.p-head__slide'
+            },
+            direction:"down",
+            scroll:{
+                items:null,
+                duration:500,
+                pauseOnHover:true,
+                fx:'scroll'
+            },
+            auto:{
+                delay:0
+            },
+            pagination:{
+                container:'#jsSlideshowControls',
+                anchorBuilder:true
+            }
+        });
+    });
+</script>
+
+</head>
+
+<body>
+<div class="container">
+    <div class="container__inner">
+    <div class="hdr">
+        <div class="case">
+            <div class="case__inner">
+                <table class="hdr__layout line">
+                    <tr>
+                        <td class="hdr__layout-left">
+                            <a href="#" class="b-logo">
+                                <img src="img/logo.png" alt="Электрогуру" />
+                                <span class="b-logo__txt">торгово-информационная система</span>
+                            </a>
+                        </td>
+                        <td class="hdr__layout-mid">
+                            <div class="hdr__contacts">
+                                <span class="hdr__contacts-item hdr__contacts-item_first">Связаться с нами:</span>
+                                <span class="hdr__contacts-item hdr__contacts-item_second"><em>+ 0 (123) <span class="hdr__num">456 78 90</span></em></span>
+                                <span class="hdr__contacts-item hdr__contacts-item_third"><em>+ 0 (123) <span class="hdr__num">456 78 90</span></em></span>
+                            </div>
+
+                            <div class="menu">
+                                <table class="menu__tbl">
+                                    <tr>
+                                        <td class="menu__item"><a href="#" class="menu__link"><i class="ico ico_type_home"> </i></a></td>
+                                        <td class="menu__item"><a href="#" class="menu__link">Новости</a></td>
+                                        <td class="menu__item"><a href="#" class="menu__link">О компании</a></td>
+                                        <td class="menu__item"><a href="#" class="menu__link">Доставка</a></td>
+                                        <td class="menu__item"><a href="#" class="menu__link">Контакты</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                        <td class="hdr__layout-right">
+                            <div class="hdr__login"><a href="#">Вход</a> / <a href="#">Регистрация</a></div>
+
+                            <a href="#" class="hdr-cart">
+                                <span class="hdr-cart__decor"><i class="ico ico_type_hdr-cart"></i></span>
+                                <span class="hdr-cart__txt">2 шт. / 20 000 руб.</span>
+                                <span class="hdr-cart__next"><span class="hdr-cart__next-inner">&gt;</span></span>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+        <div class="p-head p-head_big">
+            <div class="p-head__line p-head__line_1"></div>
+            <div class="p-head__line p-head__line_2"></div>
+            <div class="case">
+            <div class="case__inner p-head__inner1">
+                <div class="p-head__inner2">
+                    <div class="p-head__inner3">
+
+                        <div class="p-head__switcher">
+                            <div class="p-head__switcher__links" id="jsSlideshowControls"></div>
+                            <div class="p-head__line p-head__line_3"></div>
+                        </div>
+
+
+                        <div class="p-head__slideshow" id="jsSlideshow">
+
+                            <div class="p-head__slide">
+                                <div class="p-head__slide__title">Экономия времени</div>
+                                <div class="p-head__slide__notice">
+                                    <ul>
+                                        <li>до 100% товаров в одном месте;</li>
+                                        <li>товар привезут на дом;</li>
+                                        <li>быстрый ответ на все Ваши вопросы.</li>
+                                    </ul>
+                                </div>
+                                <div class="p-head__slide__pic p-head__slide__pic_1"></div>
+                            </div>
+                            <div class="p-head__slide">
+                                <div class="p-head__slide__title">
+                                    Берегите время
+                                    <!--
+                                                                                Группа профессионалов
+                                    -->
+                                </div>
+                                <div class="p-head__slide__notice">
+                                    <ul>
+                                        <li>
+                                            вся электрика в одном месте
+                                        </li>
+                                        <li>
+                                            техническая поддержка в реальном времени
+                                        </li>
+                                        <li>
+                                            доставка "на дом"
+                                        </li>
+                                    </ul>
+                                    <!--
+                                                                                Вам всегда помогут профессиональные<br>
+                                                                                консультанты в электротехнической области,<br>
+                                                                                настоящие гуру своей професии
+                                    -->
+                                </div>
+                                <div class="p-head__slide__pic p-head__slide__pic_3"></div>
+                            </div>
+                            <div class="p-head__slide">
+                                <div class="p-head__slide__title">
+                                    Добро пожаловать!
+                                </div>
+                                <div class="p-head__slide__notice">
+                                    Большой выбор электротехнической и кабельной продукции ждет Вас!
+                                    <!--
+                                                                                Электро- и светотехническая продукция<br>
+                                                                                на все случаи жизни и от самых разных<br>
+                                                                                производителей у нас для Вас!
+                                    -->
+                                </div>
+                                <div class="p-head__slide__pic p-head__slide__pic_1"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+
+        <div class="cnt line">
+            <div class="case">
+                <div class="case__inner line">
+                    <div class="cnt__right">
+                        <div class="contacts b-txt">
+                            <div class="b-txt__ttl">
+                                Вы можете связаться с&nbsp;нами:
+                            </div>
+                            <div class="contacts__item">
+                                <div class="ico-i"><i class="ico ico_type_phone"></i></div>
+                                <div class="contacts__ttl">Телефон:</div>
+                                <div class="contacts__data">+0 (123) <span class="contacts__big">456 78 90</span></div>
+                            </div>
+                            <div class="contacts__item">
+                                <div class="ico-i"><i class="ico ico_type_email"></i></div>
+                                <div class="contacts__ttl">Электронная почта:</div>
+                                <div class="contacts__data">
+                                    <a href="mailto:# "><span class="contacts__big">mail</span>@gmail.com</a>
+                                </div>
+                            </div>
+                            <div class="contacts__item">
+                                <div class="ico-i"><i class="ico ico_type_skype"></i></div>
+                                <div class="contacts__ttl">Skype:</div>
+                                <div class="contacts__data">electro_<span class="contacts__big">guru</span></div>
+                            </div>
+                            <div class="contacts__item">
+                                <div class="ico-i"><i class="ico ico_type_adress"></i></div>
+                                <div class="contacts__ttl">Адрес:</div>
+                                <div class="contacts__data">
+                                    <a href="#" target="_blank">г.Москва, <span class="contacts__big">ул. Авиаторов, 22</span></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--<div class="cnt__choose"><img src="img/choose.png" alt=""/></div>-->
+                    </div>
+
+                    <h2 class="b-ttl b-ttl_target">Цель ресурса</h2>
+                    <div class="b-txt b-txt_contacts">
+                        <p>не только дать вам возможность быстро и не выходя из дома (офиса) приобрести все, что может понадобиться для электромонтажа, но и:</p>
+                    </div>
+                    <div class="b-txt b-txt_bold">
+                        <ul>
+                            <li>помочь  в подборе необходимой Вам продукции,</li>
+                            <li>предоставить исчерпывающую информацию о ней,</li>
+                            <li>а также рассказать Вам о самых последних новинках и тенденциях электротехнического рынка.</li>
+                        </ul>
+                    </div>
+
+                    <h2 class="b-ttl b-ttl_contacts">как Сделать правильный выбор?</h2>
+                    <div class="b-txt b-txt_contacts g-clear_left">
+                        <p>Сегодня отечественный электротехнический рынок завален предложениями от различных производителей низковольтного оборудования, электроустановочных изделий и светотехнической продукции. Каждый год появляются все новые и новые бренды, предлагающие похожие как две капли воды друг на друга продукты. При этом предложения очень часто сильно разняться по цене, качеству и надежности.<br />
+                            Общемировая тенденция, связанная с макроэкономическими процессами, направлена на повсеместное снижение себестоимости продукции. Часто это бывает не в пользу его качества.</p>
+                    </div>
+
+                    <div class="b-txt b-txt_bold ">
+                        <p>Порой проверенные годами продукты, имеющие статус зарекомендовавших себя и высоконадежных, из-за погони производителя за сверхприбылями, переходят в разряд второсортных, а новые, еще неизвестные, но качественные продукты не заслужено пропускаются покупателем.</p>
+                    </div>
+
+                    <div class="b-txt b-txt_contacts">
+                        <p>Во всем этом сложно сориентироваться не только простому обывателю, но и <span class="g-orange">опытным специалистам – энергетикам, электромонтажникам, проектировщикам, снабженцам и т.д.</span> Для того, чтобы постоянно быть в курсе событий, происходящих на рынке, отслеживать новинки и мировые тренды, зачастую приходится пролистывать огромное количество печатной продукции, просматривать множество Интернет-ресурсов, посещать выставки. В конечном счете, на это требуется время.</p>
+                    </div>
+
+                    <br /><br />
+                    <div class="b-hr"></div>
+
+                    <div class="b-mission">
+                        <div class="b-ttl b-ttl_mission">Наша задача</div>
+                        <div class="b-txt">
+                            <p><strong>максимально экономить Ваше время.</strong> Наши специалисты находятся в постоянном контакте со множеством производителей и не только. Имея собственный немалый опыт работы с электротехникой, ее эксплуатации и монтажа, наши техники постоянно собирают информацию со стороны потребителей и эксплуатационников об опыте, полученном при работе с тем или иным оборудованием. Всем этим опытом и информацией мы готовы делиться на страницах нашей Торгово-информационной системы ЭлектроГуру с вами.  Информативность сайта дополнят менеджеры, которые помогут вам быстро сориентироваться на сайте, подобрать товары и осуществить покупку.</p>
+                        </div>
+                    </div>
+                    <div class="b-lamp">
+                        <div class="b-lamp__inner1">
+                            <div class="b-lamp__inner2">
+                                Цель электрогуру
+                            </div>
+                        </div>
+                    </div>
+                    <table class="b-slogan"><tbody><tr>
+                        <td class="b-slogan__1">
+                            Быть Вашим помощником и проводником в мире электротехники –
+                        </td>
+                        <td class="b-slogan__2">
+                            быть Вашим ЭлектргоГуру
+                        </td>
+                        <td class="b-slogan__3">
+                        </td>
+                    </tr></tbody></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ftr">
+    <div class="case line">
+        <div class="case__inner">
+            <p class="ftr__copy">© electroguru, 2012. All rights reserved</p>
+            <div class="ftr__menu">
+                <a href="#" class="ftr__menu-item">Главная</a>
+                <a href="#" class="ftr__menu-item">Новости</a>
+                <a href="#" class="ftr__menu-item">О компании</a>
+                <a href="#" class="ftr__menu-item">Доставка</a>
+                <a href="#" class="ftr__menu-item">Контакты</a>
+            </div>
+            <p class="ftr__social">
+                Мы в социальных сетях: <a href="#" class="ico ico_type_fb"></a> <a href="#" class="ico ico_type_vk"></a> <a href="#" class="ico ico_type_od"></a> <a href="#" class="ico ico_type_tw"></a>
+            </p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

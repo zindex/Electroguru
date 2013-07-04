@@ -1,0 +1,663 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Electroguru main</title>
+<link rel="stylesheet" href="css/style.css" />
+
+<script src="js/jquery-1.8.3.min.js"></script>
+
+<script src="js/jquery.carouFredSel-6.1.0-packed.js"></script>
+<script src="js/jquery.ui.core.min.js"></script>
+<script src="js/jquery.ui.widget.min.js"></script>
+<script src="js/jquery.ui.mouse.min.js"></script>
+<script src="js/jquery.ui.slider.min.js"></script>
+<script src="js/jquery.ui.menu.min.js"></script>
+<script src="js/jquery.ui.autocomplete.min.js"></script>
+<script src="js/jquery.ui.position.min.js"></script>
+
+
+<script src="js/jquery.mousewheel.js"></script>
+<script src="js/jquery.jscrollpane.min.js"></script>
+<script src="js/common.js"></script>
+
+<script>
+    $(function(){
+        $("#jsSlideshow").carouFredSel({
+            width:'100%',
+            items:{
+                width:'100%',
+                visible:1,
+                filter:'.p-head__slide'
+            },
+            direction:"down",
+            scroll:{
+                items:null,
+                duration:500,
+                pauseOnHover:true,
+                fx:'scroll'
+            },
+            auto:{
+                delay:0
+            },
+            pagination:{
+                container:'#jsSlideshowControls',
+                anchorBuilder:true
+            }
+        });
+
+        var acScource = [
+            { value : 'кабельные каналы',link : '#link1'},
+            { value : 'кабель',link : '#link2'},
+            { value : 'кабельные провода',link : '#link3'},
+            { value : 'кабельные каналы сложные',link : '#link4'},
+            { value : 'кабель простое',link : '#link5'}
+        ];
+
+        $( "#ac" ).autocomplete({
+            minLength: 0,
+            source: acScource,
+            appendTo: $(".b-input-i"),
+            open: function(e,ui) {
+                var termTemplate = '<strong>%s</strong>';
+                var acData = $(this).data('autocomplete');
+
+                acData.menu.element.find('a').each(function() {
+                    var me = $(this);
+                    var regex = new RegExp(acData.term, "gi");
+                    me.html( me.text().replace(regex, function (matched) {
+                        return termTemplate.replace('%s', matched);
+                    }) );
+                });
+            },
+            focus: function( event, ui ) {
+                $( "#ac" ).val( ui.item.value );
+                return false;
+            },
+            select: function( event, ui ) {
+                $( "#project" ).val( ui.item.value );
+                return false;
+            }
+        });
+//                .data( "autocomplete" )._renderItem = function( ul, item ) {
+//            return $( "<li>" )
+//                    .data( "item.autocomplete", item )
+//                    .append( '<a href="'+ item.link+'">' + item.value + "</a>" )
+//                    .appendTo( ul );
+//        };
+    });
+</script>
+
+</head>
+
+<body>
+<div class="container">
+    <div class="container__inner">
+        <div class="hdr hdr_cart-empty">
+            <div class="case">
+                <div class="case__inner">
+                    <table class="hdr__layout line">
+                        <tr>
+                        <td class="hdr__layout-left">
+                            <a href="#" class="b-logo">
+                                <img src="img/logo.png" alt="Электрогуру" />
+                                <span class="b-logo__txt">торгово-информационная система</span>
+                            </a>
+                        </td>
+                        <td class="hdr__layout-mid">
+                            <div class="hdr__contacts">
+                                <span class="hdr__contacts-item hdr__contacts-item_first">Связаться с нами:</span>
+                                <span class="hdr__contacts-item hdr__contacts-item_second"><em>+ 0 (123) <span class="hdr__num">456 78 90</span></em></span>
+                                <span class="hdr__contacts-item hdr__contacts-item_third"><em>+ 0 (123) <span class="hdr__num">456 78 90</span></em></span>
+                            </div>
+
+                            <div class="menu">
+                                <table class="menu__tbl">
+                                    <tr>
+                                        <td class="menu__item"><a href="#" class="menu__link"><i class="ico ico_type_home"> </i></a></td>
+                                        <td class="menu__item"><a href="#" class="menu__link">Новости</a></td>
+                                        <td class="menu__item"><a href="#" class="menu__link">О компании</a></td>
+                                        <td class="menu__item"><a href="#" class="menu__link">Доставка</a></td>
+                                        <td class="menu__item"><a href="#" class="menu__link">Контакты</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                        <td class="hdr__layout-right">
+                            <div class="hdr__login"><a href="#">Вход</a> / <a href="#">Регистрация</a></div>
+
+                            <a href="#" class="hdr-cart">
+                                <span class="hdr-cart__decor"><i class="ico ico_type_hdr-cart"></i></span>
+                                <span class="hdr-cart__txt">Корзина пуста</span>
+                                <span class="hdr-cart__next"><span class="hdr-cart__next-inner">&gt;</span></span>
+                            </a>
+
+                            <!--
+                            <a href="#" class="hdr-cart">
+                                <span class="hdr-cart__decor"><i class="ico ico_type_hdr-cart"></i></span>
+                                <span class="hdr-cart__txt">2 шт. / 20 000 руб.</span>
+                                <span class="hdr-cart__next"><span class="hdr-cart__next-inner">&gt;</span></span>
+                            </a>
+                            -->
+                        </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-head">
+            <div class="p-head__line p-head__line_1"></div>
+            <div class="p-head__line p-head__line_2"></div>
+            <div class="case">
+            <div class="case__inner p-head__inner1">
+                <div class="p-head__inner2">
+                    <div class="p-head__inner3">
+
+                        <div class="p-head__switcher">
+                            <div class="p-head__switcher__links" id="jsSlideshowControls">
+                            </div>
+                            <div class="p-head__line p-head__line_3"></div>
+                        </div>
+
+
+                        <div class="p-head__slideshow" id="jsSlideshow">
+
+                            <div class="p-head__slide">
+                                <div class="p-head__slide__title-simple">Экономия времени</div>
+                                <div class="p-head__slide__notice">
+                                    <ul>
+                                        <li>до 100% товаров в одном месте;</li>
+                                        <li>товар привезут на дом;</li>
+                                        <li>быстрый ответ на все Ваши вопросы.</li>
+                                    </ul>
+                                </div>
+                                <div class="p-head__slide__pic p-head__slide__pic_4"></div>
+                            </div>
+                            <div class="p-head__slide">
+                                <div class="p-head__slide__title-simple">
+                                    Берегите время
+                                    <!--
+                                                                                Группа профессионалов
+                                    -->
+                                </div>
+                                <div class="p-head__slide__notice">
+                                    <ul>
+                                        <li>
+                                            вся электрика в одном месте
+                                        </li>
+                                        <li>
+                                            техническая поддержка в реальном времени
+                                        </li>
+                                        <li>
+                                            доставка "на дом"
+                                        </li>
+                                    </ul>
+                                    <!--
+                                                                                Вам всегда помогут профессиональные<br>
+                                                                                консультанты в электротехнической области,<br>
+                                                                                настоящие гуру своей професии
+                                    -->
+                                </div>
+                                <div class="p-head__slide__pic p-head__slide__pic_3"></div>
+                            </div>
+                            <div class="p-head__slide">
+                                <div class="p-head__slide__title-simple">
+                                    Добро пожаловать!
+                                </div>
+                                <div class="p-head__slide__notice">
+                                    Большой выбор электротехнической и кабельной продукции ждет Вас!
+                                    <!--
+                                                                                Электро- и светотехническая продукция<br>
+                                                                                на все случаи жизни и от самых разных<br>
+                                                                                производителей у нас для Вас!
+                                    -->
+                                </div>
+                                <div class="p-head__slide__pic p-head__slide__pic_1"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="b-search">
+            <div class="case">
+                <div class="case__inner">
+                    <table class="b-search__tbl">
+                        <tr>
+                            <td class="b-search__txt">Начать поиск</td>
+                            <td class="b-search__input">
+                                <div class="b-input-i">
+                                    <input id="ac" type="text" class="b-input" value="" placeholder="например, кабельные каналы" />
+                                </div>
+                            </td>
+                            <td class="b-search__submit">
+                                <a href="#" class="b-search__button">
+                                    <i class="ico ico_type_search"></i>
+                                    <i class="ico ico_type_search-arrow"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="category line">
+            <div class="case">
+                <div class="case__inner">
+                    <div class="category__col">
+                        <div class="category__item-i">
+                            <a href="#" class="category__item b-category">
+                                <span class="cat-ico-i"><span class="b-category__img"><img src="img/cat-circuit-breaker.png" data-hover-img="img/cat-circuit-breaker-hover.png" alt=""/></span></span>
+                                <span class="category__item-data">
+                                    <span class="category__item-txt">Автоматы и УЗО</span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="category__item-i">
+                            <a href="#" class="category__item b-category">
+                                <span class="cat-ico-i"><span class="b-category__img"><img src="img/cat-boxes.png" data-hover-img="img/cat-boxes-hover.png" alt=""/></span></span>
+                                <span class="category__item-data">
+                                    <span class="category__item-txt">Шкафы и боксы</span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="category__item-i">
+                            <a href="#" class="category__item b-category">
+                                <span class="cat-ico-i"><span class="b-category__img"><img src="img/cat-relay.png" data-hover-img="img/cat-relay-hover.png" alt=""/></span></span>
+                                <span class="category__item-data">
+                                    <span class="category__item-txt">Контакоры и реле</span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="category__item-i">
+                            <a href="#" class="category__item b-category">
+                                <span class="cat-ico-i"><span class="b-category__img"><img src="img/cat-transformer.png" data-hover-img="img/cat-transformer-hover.png" alt=""/></span></span>
+                                <span class="category__item-data">
+                                    <span class="category__item-txt">Электросчетчики и трансформаторы тока</span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="category__item-i">
+                            <a href="#" class="category__item b-category">
+                                <span class="cat-ico-i"><span class="b-category__img"><img src="img/cat-contact-breaker.png" data-hover-img="img/cat-contact-breaker-hover.png" alt=""/></span></span>
+                                <span class="category__item-data">
+                                    <span class="category__item-txt">Рубильники, разъединители. Плавкие вставки</span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="category__item-i">
+                            <a href="#" class="category__item b-category">
+                                <span class="cat-ico-i"><span class="b-category__img"><img src="img/cat-alarm-system.png" data-hover-img="img/cat-alarm-system-hover.png" alt=""/></span></span>
+                                <span class="category__item-data">
+                                    <span class="category__item-txt">Устройства управления и сигнализации</span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="category__col">
+                        <div class="category__item-i">
+                            <a href="#" class="category__item b-category">
+                                <span class="cat-ico-i"><span class="b-category__img"><img src="img/cat-illuminator.png" data-hover-img="img/cat-illuminator-hover.png" alt=""/></span></span>
+                                <span class="category__item-data">
+                                    <span class="category__item-txt">Cветильники</span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="category__item-i">
+                            <a href="#" class="category__item b-category">
+                                <span class="cat-ico-i"><span class="b-category__img"><img src="img/cat-lamp.png" data-hover-img="img/cat-lamp-hover.png" alt=""/></span></span>
+                                <span class="category__item-data">
+                                    <span class="category__item-txt">Лампы</span>
+                                </span>
+                            </a>
+                            <div class="cover" style="width:250px;">
+                                <div class="cover__list">
+                                    <a href="#" class="cover__list-item"><span class="cover__list-txt">Лампы накаливания (ЛОН)</span> <span class="cover__num">2</span></a>
+                                    <a href="#" class="cover__list-item"><span class="cover__list-txt">Галогенные лампы</span> <span class="cover__num">364</span></a>
+                                    <a href="#" class="cover__list-item"><span class="cover__list-txt">Люминесцентные лампы</span> <span class="cover__num">364</span></a>
+                                    <a href="#" class="cover__list-item"><span class="cover__list-txt">Компактные люминесцентныелампы (КЛЛ)</span> <span class="cover__num">6583</span></a>
+                                    <a href="#" class="cover__list-item"><span class="cover__list-txt">Газоразрядные лампы высокого давления (ДРЛ, ДНАТ, ДРИ)</span> <span class="cover__num">837</span></a>
+                                    <a href="#" class="cover__list-item"><span class="cover__list-txt">Светодиодные источники света</span> <span class="cover__num">6583</span></a>
+                                    <a href="#" class="cover__list-item"><span class="cover__list-txt">Лампы специального назначения</span> <span class="cover__num">837</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="category__item-i">
+                            <a href="#" class="category__item b-category">
+                                <span class="cat-ico-i"><span class="b-category__img"><img src="img/cat-wire.png" data-hover-img="img/cat-wire-hover.png" alt=""/></span></span>
+                                <span class="category__item-data">
+                                    <span class="category__item-txt">Провод и кабель</span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="category__item-i">
+                            <a href="#" class="category__item b-category">
+                                <span class="cat-ico-i"><span class="b-category__img"><img src="img/cat-cable.png" data-hover-img="img/cat-cable-hover.png" alt=""/></span></span>
+                                <span class="category__item-data">
+                                    <span class="category__item-txt">Кабельные каналы и гофра</span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="category__item-i">
+                            <a href="#" class="category__item b-category">
+                                <span class="cat-ico-i"><span class="b-category__img"><img src="img/cat-ground-connection.png" data-hover-img="img/cat-ground-connection-hover.png" alt=""/></span></span>
+                                <span class="category__item-data">
+                                    <span class="category__item-txt">Молниезащита и заземление</span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="category__item-i">
+                            <a href="#" class="category__item b-category">
+                                <span class="cat-ico-i"><span class="b-category__img"><img src="img/cat-inductry-plug.png" data-hover-img="img/cat-inductry-plug-hover.png" alt=""/></span></span>
+                                <span class="category__item-data">
+                                    <span class="category__item-txt">Промышленные разъемы</span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="category__col category__col_last">
+                        <div class="category__item-i">
+                            <a href="#" class="category__item b-category">
+                                <span class="cat-ico-i"><span class="b-category__img"><img src="img/cat-socket.png" data-hover-img="img/cat-socket-hover.png" alt=""/></span></span>
+                                <span class="category__item-data">
+                                    <span class="category__item-txt">Розетки и выключатели</span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="category__item-i">
+                            <a href="#" class="category__item b-category">
+                                <span class="cat-ico-i"><span class="b-category__img"><img src="img/cat-bell.png" data-hover-img="img/cat-bell-hover.png" alt=""/></span></span>
+                                <span class="category__item-data">
+                                    <span class="category__item-txt">Звонки и домофоны</span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="category__item-i">
+                            <a href="#" class="category__item b-category">
+                                <span class="cat-ico-i"><span class="b-category__img"><img src="img/cat-floor.png" data-hover-img="img/cat-floor-hover.png" alt=""/></span></span>
+                                <span class="category__item-data">
+                                    <span class="category__item-txt">Теплый пол</span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="category__item-i">
+                            <a href="#" class="category__item b-category">
+                                <span class="cat-ico-i"><span class="b-category__img"><img src="img/cat-tv.png" data-hover-img="img/cat-tv-hover.png" alt=""/></span></span>
+                                <span class="category__item-data">
+                                    <span class="category__item-txt">Компоненты для телефонии и телевидения</span>
+                                </span>
+                            </a>
+                            <div class="cover" style="width:250px;">
+                                <div class="cover__list">
+                                    <a href="#" class="cover__list-item"><span class="cover__list-txt">Лампы накаливания (ЛОН)</span> <span class="cover__num">2</span></a>
+                                    <a href="#" class="cover__list-item"><span class="cover__list-txt">Галогенные лампы</span> <span class="cover__num">364</span></a>
+                                    <a href="#" class="cover__list-item"><span class="cover__list-txt">Люминесцентные лампы</span> <span class="cover__num">364</span></a>
+                                    <a href="#" class="cover__list-item"><span class="cover__list-txt">Компактные люминесцентныелампы (КЛЛ)</span> <span class="cover__num">6583</span></a>
+                                    <a href="#" class="cover__list-item"><span class="cover__list-txt">Газоразрядные лампы высокого давления (ДРЛ, ДНАТ, ДРИ)</span> <span class="cover__num">837</span></a>
+                                    <a href="#" class="cover__list-item"><span class="cover__list-txt">Светодиодные источники света</span> <span class="cover__num">6583</span></a>
+                                    <a href="#" class="cover__list-item"><span class="cover__list-txt">Лампы специального назначения</span> <span class="cover__num">837</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="category__item-i">
+                            <a href="#" class="category__item b-category">
+                                <span class="cat-ico-i"><span class="b-category__img"><img src="img/cat-electrical-material.png" data-hover-img="img/cat-electrical-material-hover.png" alt=""/></span></span>
+                                <span class="category__item-data">
+                                    <span class="category__item-txt">Электромонтажные материалы</span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="category__item-i">
+                            <a href="#" class="category__item b-category">
+                                <span class="cat-ico-i"><span class="b-category__img"><img src="img/cat-tools.png" data-hover-img="img/cat-tools-hover.png" alt=""/></span></span>
+                                <span class="category__item-data">
+                                    <span class="category__item-txt">Инструмент</span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="producers">
+            <div class="case">
+                <div class="case__inner">
+                    <a href="#" class="b-more b-link b-link_pseudo"><span class="b-link__inner">Все производители</span></a>
+                    <div class="producers__ttl">Производители</div>
+
+                    <div class="producers__list line">
+                        <div class="producers__item-i">
+                            <a href="#" class="producers__item">
+                                <span class="b-prod"><img src="img/prod-philips.png" data-hover-img="img/prod-philips-hover.png" alt=""/></span>
+                                <span class="producers__num">2</span>
+                            </a>
+                        </div>
+                        <div class="producers__item-i">
+                            <a href="#" class="producers__item"><span class="b-prod"><img src="img/prod-siemens.png" data-hover-img="img/prod-siemens-hover.png"  alt=""/></span><span class="producers__num">689</span></a>
+                        </div>
+                        <div class="producers__item-i">
+                            <a href="#" class="producers__item"><span class="b-prod"><img src="img/prod-abb.png" data-hover-img="img/prod-abb-hover.png"  alt=""/></span><span class="producers__num">3136</span> </a>
+                        </div>
+                        <div class="producers__item-i">
+                            <a href="#" class="producers__item"><span class="b-prod"><img src="img/prod-dekraft.png" data-hover-img="img/prod-dekraft-hover.png"  alt=""/></span><span class="producers__num">474</span> </a>
+                        </div>
+                        <div class="producers__item-i">
+                            <a href="#" class="producers__item"><span class="b-prod"><img src="img/prod-oez.png" data-hover-img="img/prod-oez-hover.png"  alt=""/></span><span class="producers__num">730</span> </a>
+                        </div>
+
+                        <div class="producers__item-i">
+                            <a href="#" class="producers__item"><span class="b-prod"><img src="img/prod-fontini.png" data-hover-img="img/prod-fontini-hover.png"  alt=""/></span><span class="producers__num">123</span></a>
+                        </div>
+                        <div class="producers__item-i">
+                            <a href="#" class="producers__item"><span class="b-prod"><img src="img/prod-sev-tech.png" data-hover-img="img/prod-sev-tech-hover.png"  alt=""/></span><span class="producers__num">10</span></a>
+                        </div>
+                        <div class="producers__item-i">
+                            <a href="#" class="producers__item"><span class="b-prod"><img src="img/prod-obo.png" data-hover-img="img/prod-obo-hover.png"  alt=""/></span><span class="producers__num">49</span></a>
+                        </div>
+                        <div class="producers__item-i">
+                            <a href="#" class="producers__item"><span class="b-prod"><img src="img/prod-osram.png" data-hover-img="img/prod-osram-hover.png"  alt=""/></span><span class="producers__num">8</span></a>
+                        </div>
+                        <div class="producers__item-i">
+                            <a href="#" class="producers__item"><span class="b-prod"><img src="img/prod-merten.png" data-hover-img="img/prod-merten-hover.png"  alt=""/></span><span class="producers__num">1132</span></a>
+                        </div>
+                        <div class="producers__item-i">
+                            <a href="#" class="producers__item"><span class="b-prod"><img src="img/prod-legrand.png" data-hover-img="img/prod-legrand-hover.png"  alt=""/></span><span class="producers__num">572</span></a>
+                        </div>
+                        <div class="producers__item-i">
+                            <a href="#" class="producers__item"><span class="b-prod"><img src="img/prod-wago.png" data-hover-img="img/prod-wago-hover.png"  alt=""/></span><span class="producers__num">653</span></a>
+                        </div>
+                        <div class="producers__item-i">
+                            <a href="#" class="producers__item"><span class="b-prod"><img src="img/prod-sev-cable.png" data-hover-img="img/prod-sev-cable-hover.png"  alt=""/></span><span class="producers__num">3647</span></a>
+                        </div>
+                        <div class="producers__item-i">
+                            <a href="#" class="producers__item"><span class="b-prod"><img src="img/prod-eaton.png" data-hover-img="img/prod-eaton-hover.png"  alt=""/></span><span class="producers__num">95</span></a>
+                        </div>
+
+                        <div class="producers__item-i">
+                            <a href="#" class="producers__item"><span class="b-prod"><img src="img/prod-gira.png" data-hover-img="img/prod-gira-hover.png"  alt=""/></span><span class="producers__num">4816</span></a>
+                        </div>
+                        <div class="producers__item-i">
+                            <a href="#" class="producers__item"><span class="b-prod"><img src="img/prod-dkc.png" data-hover-img="img/prod-dkc-hover.png"  alt=""/></span><span class="producers__num">9524</span></a>
+                        </div>
+                        <div class="producers__item-i">
+                            <a href="#" class="producers__item"><span class="b-prod"><img src="img/prod-bosch.png" data-hover-img="img/prod-bosch-hover.png"  alt=""/></span><span class="producers__num">2888</span></a>
+                        </div>
+                        <div class="producers__item-i">
+                            <a href="#" class="producers__item"><span class="b-prod"><img src="img/prod-schneider.png" data-hover-img="img/prod-schneider-hover.png"  alt=""/></span><span class="producers__num">649</span></a>
+                        </div>
+                        <div class="producers__item-i">
+                            <a href="#" class="producers__item"><span class="b-prod"><img src="img/prod-fede.png" data-hover-img="img/prod-fede-hover.png"  alt=""/></span><span class="producers__num">3119</span></a>
+                        </div>
+                        <div class="producers__item-i">
+                            <a href="#" class="producers__item"><span class="b-prod"><img src="img/prod-ruvinil.png" data-hover-img="img/prod-ruvinil-hover.png"  alt=""/></span><span class="producers__num">28</span></a>
+                        </div>
+                        <div class="producers__item-i">
+                            <a href="#" class="producers__item"><span class="b-prod"><img src="img/prod-devi.png" data-hover-img="img/prod-devi-hover.png"  alt=""/></span><span class="producers__num">11</span></a>
+                        </div>
+                        <div class="producers__item-i">
+                            <a href="#" class="producers__item"><span class="b-prod"><img src="img/prod-rittal.png" data-hover-img="img/prod-rittal-hover.png"  alt=""/></span><span class="producers__num">71</span></a>
+                        </div>
+                        <div class="producers__item-i">
+                            <a href="#" class="producers__item"><span class="b-prod"><img src="img/prod-bticino.png" data-hover-img="img/prod-bticino-hover.png"  alt=""/></span><span class="producers__num">59</span></a>
+                        </div>
+                        <div class="producers__item-i">
+                            <a href="#" class="producers__item"><span class="b-prod"><img src="img/prod-knipex.png" data-hover-img="img/prod-knipex-hover.png"  alt=""/></span><span class="producers__num">20</span></a>
+                        </div>
+                        <div class="producers__item-i">
+                            <a href="#" class="producers__item"><span class="b-prod"><img src="img/prod-kima.png" data-hover-img="img/prod-kima-hover.png"  alt=""/></span><span class="producers__num">3</span></a>
+                        </div>
+                        <div class="producers__item-i">
+                            <a href="#" class="producers__item"><span class="b-prod"><img src="img/prod-unknown.png" data-hover-img="img/prod-unknown-hover.png"  alt=""/></span><span class="producers__num">30</span></a>
+                        </div>
+                        <div class="producers__item-i">
+                            <a href="#" class="producers__item"><span class="b-prod"><img src="img/prod-not-good-known.png" data-hover-img="img/prod-not-good-known-hover.png"  alt=""/></span><span class="producers__num">6</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cnt">
+            <div class="case">
+                <div class="case__inner line">
+                <div class="articles line">
+                    <div class="articles__col">
+                        <a href="#" class="articles__col-ttl">Новости компании <i class="ico ico_type_news"></i></a>
+
+                        <div class="b-article">
+                            <h3 class="b-article__ttl"><a href="#">Новинки электроустановочной техники от ABB </a></h3>
+                            <div class="b-article__date">13.09.2012 </div>
+                            <div class="b-article__img"><a href="#"><img src="img/article1.jpg" alt=""/></a></div>
+                            <div class="b-article__txt">
+                                Сегодня отечественный электротехнический рынок завален предложениями от различных производителей низковольтного оборудования, электроустановочных изделий и светотехнической продукции...
+                                <a href="#" class="b-article__more">подробнее</a>
+                            </div>
+                        </div>
+
+                        <div class="b-article">
+                            <h3 class="b-article__ttl"><a href="#">Новинки электроустановочной техники от ABB </a></h3>
+                            <div class="b-article__date">13.09.2012 </div>
+                            <div class="b-article__txt">
+                                Сегодня отечественный электротехнический рынок завален предложениями от различных производителей низковольтного оборудования, электроустановочных изделий и светотехнической продукции...
+                                <a href="#" class="b-article__more">подробнее</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="articles__col">
+                        <a href="#" class="articles__col-ttl">Сделай сам <i class="ico ico_type_diy"></i></a>
+
+                        <div class="b-article">
+                            <h3 class="b-article__ttl"><a href="#">Новинки электроустановочной техники от ABB </a></h3>
+                            <div class="b-article__date">13.09.2012 </div>
+
+                            <div class="b-article__txt">
+                                Сегодня отечественный электротехнический рынок завален предложениями от различных производителей низковольтного оборудования, электроустановочных изделий и светотехнической продукции...
+                                <a href="#" class="b-article__more">подробнее</a>
+                            </div>
+                        </div>
+
+                        <div class="b-article">
+                            <h3 class="b-article__ttl"><a href="#">Новинки электроустановочной техники от ABB </a></h3>
+                            <div class="b-article__date">13.09.2012 </div>
+                            <div class="b-article__img"><a href="#"><img src="img/article2.jpg" alt=""/></a></div>
+                            <div class="b-article__txt">
+                                Сегодня отечественный электротехнический рынок завален предложениями от различных производителей низковольтного оборудования, электроустановочных изделий и светотехнической продукции...
+                                <a href="#" class="b-article__more">подробнее</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="articles__col">
+                        <a href="#" class="articles__col-ttl">Мнение эксперта <i class="ico ico_type_glasses"></i></a>
+
+                        <div class="b-article">
+                            <h3 class="b-article__ttl"><a href="#">Новинки электроустановочной техники от ABB </a></h3>
+                            <div class="b-article__date">13.09.2012 </div>
+
+                            <div class="b-article__txt">
+                                Сегодня отечественный электротехнический рынок завален предложениями от различных производителей низковольтного оборудования, электроустановочных изделий и светотехнической продукции...
+                                <a href="#" class="b-article__more">подробнее</a>
+                            </div>
+                        </div>
+
+                        <div class="b-article">
+                            <h3 class="b-article__ttl"><a href="#">Новинки электроустановочной техники от ABB </a></h3>
+                            <div class="b-article__date">13.09.2012 </div>
+
+                            <div class="b-article__txt">
+                                Сегодня отечественный электротехнический рынок завален предложениями от различных производителей низковольтного оборудования, электроустановочных изделий и светотехнической продукции...
+                                <a href="#" class="b-article__more">подробнее</a>
+                            </div>
+                        </div>
+
+                        <div class="b-article">
+                            <h3 class="b-article__ttl"><a href="#">Новинки электроустановочной техники от ABB </a></h3>
+                            <div class="b-article__date">13.09.2012 </div>
+                            <div class="b-article__txt">
+                                Сегодня отечественный электротехнический рынок завален предложениями от различных производителей низковольтного оборудования, электроустановочных изделий и светотехнической продукции...
+                                <a href="#" class="b-article__more">подробнее</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="articles__col">
+                        <a href="#" class="articles__col-ttl">Обзор продуктов <i class="ico ico_type_review"></i></a>
+
+                        <div class="b-article">
+                            <h3 class="b-article__ttl"><a href="#">Новинки электроустановочной техники от ABB </a></h3>
+                            <div class="b-article__date">13.09.2012 </div>
+                            <div class="b-article__img"><a href="#"><img src="img/article2.jpg" alt=""/></a></div>
+                            <div class="b-article__txt">
+                                Сегодня отечественный электротехнический рынок завален предложениями от различных производителей низковольтного оборудования, электроустановочных изделий и светотехнической продукции...
+                                <a href="#" class="b-article__more">подробнее</a>
+                            </div>
+                        </div>
+
+                        <div class="b-article">
+                            <h3 class="b-article__ttl"><a href="#">Новинки электроустановочной техники от ABB </a></h3>
+                            <div class="b-article__date">13.09.2012 </div>
+                            <div class="b-article__img"><a href="#"><img src="img/article4.jpg" alt=""/></a></div>
+                            <div class="b-article__txt">
+                                Сегодня отечественный электротехнический рынок завален предложениями от различных производителей низковольтного оборудования, электроустановочных изделий и светотехнической продукции...
+                                <a href="#" class="b-article__more">подробнее</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="articles__all">
+                        <a href="#">Все статьи <i class="ico ico_type_arrow-next"></i></a>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ftr">
+    <div class="case line">
+        <div class="case__inner">
+            <p class="ftr__copy">© electroguru, 2012. All rights reserved</p>
+            <div class="ftr__menu">
+                <a href="#" class="ftr__menu-item">Главная</a>
+                <a href="#" class="ftr__menu-item">Новости</a>
+                <a href="#" class="ftr__menu-item">О компании</a>
+                <a href="#" class="ftr__menu-item">Доставка</a>
+                <a href="#" class="ftr__menu-item">Контакты</a>
+            </div>
+            <p class="ftr__social">
+                Мы в социальных сетях: <a href="#" class="ico ico_type_fb"></a> <a href="#" class="ico ico_type_vk"></a> <a href="#" class="ico ico_type_od"></a> <a href="#" class="ico ico_type_tw"></a>
+            </p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
